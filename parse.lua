@@ -4,8 +4,6 @@ require "io"
 
 body = io.input("test.xml"):read("*a")
  
--- parseTree = lxp.lom.parse(body)
-
 function In(str, tbl)
   for _, v in pairs(tbl) do
     if str == v then return true end
