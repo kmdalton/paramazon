@@ -9,6 +9,8 @@ r["SearchIndex"]="Books"
 
 url = r:request()
 
-r, c, h = http.request(url)
+b, c, h = http.request(url)
 
-print(r)
+body = io.open("test.xml", "w+")
+body:write(b)
+body:flush(); body:close()
