@@ -1,3 +1,4 @@
+-- you will need to do 'sudo apt-get install lua-expat' to get the lxp module
 require "lxp"
 require "io"
 
