@@ -18,7 +18,7 @@ end
     -- The following are required terms
     r.PrivateKey     = [AWSPrivateKey] -- fill in your private key
     r.AWSAccessKeyID = [AWSaccessKey]  -- fill in your public key
-    r.KeyWords       = [Search KeyWords] -- fill in the thing you want to search for
+    r.Keywords       = [Search Keywords] -- fill in the thing you want to search for
     url = r:request() -- right now the request function returns the product search url signed
                       -- with your private key. in the future this will return the resulting xml
 
