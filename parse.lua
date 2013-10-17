@@ -14,6 +14,7 @@ end
 
 elements = {"Author", "Title", "Creator", "DetailPageURL"}
 
+-- mostly borrowed from http://matthewwild.co.uk/projects/luaexpat/examples.html
 callbacks = {
   StartElement = function(parser, name)
     if In(name, elements) then
