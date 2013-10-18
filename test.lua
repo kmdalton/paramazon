@@ -5,7 +5,7 @@ r["Keywords"]="Lua"
 r["ItemPage"]="1"
 r["SearchIndex"]="Books"
 
-b, c, h = r:request(url)
+b, c, h = r:request()
 
 body = io.open("test.xml", "w+")
 body:write(b)
