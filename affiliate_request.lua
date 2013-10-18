@@ -87,7 +87,7 @@ function requester:request()
     requestString = urlencode(requestString)
     stringToSign  = "GET\nwebservices.amazon.com\n/onca/xml\n" ..requestString:sub(2) 
     --stringToSign  = "GET\necs.amazonaws.co.uk\n/onca/xml\n" ..requestString:sub(2) 
-    print(stringToSign)
+    --print(stringToSign)
     if self.PrivateKey then
         signature = crypto.hmac.digest("sha256", stringToSign, self.PrivateKey, true)
         signature = enc(signature)
@@ -99,7 +99,7 @@ function requester:request()
 end
 
 -- This is straight up stolen from here - https://gist.github.com/ignisdesign/4323051
--- TODO space handling is borked. amazon wants  %20 
+-- Space handling seems to work; if we run into problems there's a urlencode example in the PiL book
 function urlencode(str, strict)
     if (str) then
         str = string.gsub (str, "\n", "\r\n")
