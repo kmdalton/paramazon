@@ -1,0 +1,8 @@
+- Get price and average rating from Amazon
+- Parse/filter XML into a table containing only the info we want to send to the client (see parse.ex.lua)
+- JSON encode said table and return to client
+- Add an nginx.conf
+- Push to testing server on Heroku
+- Client side interface
+- ...
+- Profit
