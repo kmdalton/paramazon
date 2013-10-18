@@ -1,0 +1,16 @@
+doctype html
+
+- var t = 'PARAMAZON'
+
+html(lang='en')
+  
+  head
+    title= t
+
+  body
+    h1= t
+    p Type some keywords to search Amazon Books
+    form(method='GET', action='/q')
+      input(name='keywords', type='text', value='Amazon Rainforest')
+      input(type='submit', value=t)
+
