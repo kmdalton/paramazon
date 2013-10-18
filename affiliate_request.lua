@@ -7,6 +7,7 @@
 require "crypto"
 require "base64"
 require "io"
+http = require("socket.http")
 
 local function timestamp()
     return os.date("!%Y-%m-%dT%H:%M:%SZ")
@@ -19,8 +20,8 @@ end
     r.PrivateKey     = [AWSPrivateKey] -- fill in your private key
     r.AWSAccessKeyID = [AWSaccessKey]  -- fill in your public key
     r.Keywords       = [Search Keywords] -- fill in the thing you want to search for
-    url = r:request() -- right now the request function returns the product search url signed
-                      -- with your private key. in the future this will return the resulting xml
+    url = r:request() -- creates the product search url signed with your private key,
+                      -- then makes the request and returns the resulting xml
 
 ]]--
 requester = {}
@@ -32,6 +33,7 @@ function requester:new(confFileName)
             "AWSAccessKeyId" ,
             "AssociateTag"   ,
             "ItemId"         ,
+            "ItemPage"       ,  -- Number of pages to return
             "Keywords"       ,  -- A string is required
             "MaximumPrice"   ,  -- A string or int will do.  "3241"/3241 represents $32.41
             "MerchantID"     ,  -- A string -- we probably won't use this for now
@@ -39,7 +41,7 @@ function requester:new(confFileName)
             "Operation"      ,
             "ResponseGroup"  ,
             "Sort"           ,
-            "SearchIndex"    ,
+            "SearchIndex"    ,  -- e.g. "Books"
             "Service"        ,
             "Timestamp"      ,
             "Version"
@@ -93,7 +95,7 @@ function requester:request()
         requestString = requestString ..'&Signature=' ..signature
     end
     requestString = urlBase ..requestString
-    return requestString
+    return http.request(requestString)
 end
 
 -- This is straight up stolen from here - https://gist.github.com/ignisdesign/4323051
