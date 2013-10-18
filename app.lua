@@ -13,6 +13,7 @@ r = requester:new("private.conf")
 r["Keywords"] = keywords
 r["ItemPage"] = "1"
 r["SearchIndex"] = "Books"
+r["ResponseGroup"]="ItemAttributes, Reviews"
 
 body = r:request()
 
