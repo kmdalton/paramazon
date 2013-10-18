@@ -7,6 +7,6 @@ r["SearchIndex"]="Books"
 
 url = r:request()
 
-b, c, h = r:request(url)
+b, c, h = r:request()
 
 print(b)
