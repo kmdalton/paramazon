@@ -10,9 +10,12 @@ function In(str, tbl)
   end
 end
 
-elements = {"Author", "Title", "Creator", "DetailPageURL"}
+elements = {"Author", "Title", "Creator", "DetailPageURL", "FormattedPrice", "IFrameURL", "TotalReviews"}
+-- http://docs.aws.amazon.com/AWSECommerceService/2011-08-01/DG/CHAP_response_elements.html#TotalReviews
+-- TotalReviews comes closest to the element I want, but that does not seem to exist, AverageReview.
+-- CustomerReviews/Review/Rating is too specific but may be useful, if we can figure out how to get it 
 
--- mostly borrowed from http://matthewwild.co.uk/projects/luaexpat/examples.html
+-- mostly taken from http://matthewwild.co.uk/projects/luaexpat/examples.html
 callbacks = {
   StartElement = function(parser, name)
     if In(name, elements) then
@@ -26,7 +29,7 @@ callbacks = {
   EndElement = function(parser, name)
     if In(name, elements) then
       callbacks.CharacterData = false
-    elseif name == "ItemAttributes" then
+    elseif name == "Item" then
       io.write("---\n")
     end
   end,
