@@ -3,3 +3,7 @@ Fix this fucking LuaSocket issue
 - I don't see this error on my machine and I think I have all the same package versions, WTF
 - Could try to roll my own Docker image for OpenResty, using a Debian base, but I'm not sure that'd help
 - Could take socket.http.request out of affiliate_request, rewrite using ngx.socket.tcp
+Or, scrap Docker until it hits 1.0
+- Use a Vagrant VM and compatible provider
+- Spin up a new Digital Ocean droplet and run scripts
+- Replace default nginx install on jameskoppen.com with OpenResty, serve both sites
