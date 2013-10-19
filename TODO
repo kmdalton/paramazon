@@ -1,0 +1,5 @@
+Fix this fucking LuaSocket issue
+- Seems like v2.0.2-x has an issue Lua 5.1? something about luaL_object or something, need to reproduce
+- I don't see this error on my machine and I think I have all the same package versions, WTF
+- Could try to roll my own Docker image for OpenResty, using a Debian base, but I'm not sure that'd help
+- Could take socket.http.request out of affiliate_request, rewrite using ngx.socket.tcp
