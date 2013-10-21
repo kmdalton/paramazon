@@ -7,6 +7,7 @@
 require "crypto"
 require "base64"
 require "io"
+require "private" -- private.lua file in same directory holds account credentials
 http = require("socket.http")
 
 local function timestamp()
@@ -26,7 +27,7 @@ end
 ]]--
 requester = {}
 
-function requester:new(confFileName) 
+function requester:new() 
 
     newRequester = {
         searchTerms = {
@@ -46,29 +47,14 @@ function requester:new(confFileName)
             "Timestamp"      ,
             "Version"
         }, 
-        Operation    = "ItemSearch",
-        PrivateKey   = false,
-        Service      = "AWSECommerceService",
-        Version      = "2011-08-01",
+        Operation      = "ItemSearch",
+        PrivateKey     = private.PrivateKey,
+        AWSAccessKeyId = private.AWSAccessKeyId,
+        AssociateTag   = private.AssociateTag,
+        Service        = "AWSECommerceService",
+        Version        = "2011-08-01",
     }
-    if confFileName then
-        for line in io.lines(confFileName) do
-            words = line:gmatch("%S+")
-            key = words()
-            val = words()
-            for i,term in pairs(newRequester['searchTerms']) do
-                if key == term then
-                    newRequester[key] = val
-                end
-            end
-
-            if key == "PrivateKey" then -- We're handling this one separately for now
-                newRequester["PrivateKey"] = val
-            end
-
-        end
-    end
-
+    
     self.__index = self
     return setmetatable(newRequester, self)
 end

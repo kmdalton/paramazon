@@ -8,7 +8,7 @@ end
 
 local args = ngx.req.get_uri_args()
 
-local r = requester:new("private.conf")
+local r = requester:new()
 r["Keywords"] = args.keywords
 r["ItemPage"] = "1"
 r["SearchIndex"] = "Books" -- "Blended" for all product types
