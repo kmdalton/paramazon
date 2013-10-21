@@ -48,6 +48,8 @@ function requester:new(confFileName)
         }, 
         Operation    = "ItemSearch",
         PrivateKey   = false,
+        Service      = "AWSECommerceService",
+        Version      = "2011-08-01",
     }
     if confFileName then
         for line in io.lines(confFileName) do
