@@ -21,10 +21,10 @@ make
 sudo make install
 
 mkdir -p /app/{conf,html,logs}
-PATH=/usr/local/openresty/nginx/sbin:$PATH
+PATH=$BASEPATH/nginx/sbin:$PATH
 
 cp app.lua affiliate_request.lua base64.lua private.lua /app
-cp nginx.conf /usr/local/openresty/nginx/conf/mime.types /app/conf
+cp nginx.conf $BASEPATH/nginx/conf/mime.types /app/conf
 cp index.html /app/html
 
 echo
