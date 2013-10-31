@@ -33,7 +33,7 @@ callbacks = {
     if In(name, elements) then
       callbacks.CharacterData = false
     elseif name == "Item" then
-      table.insert(parsed, item); item = {}
+      parsed[#parsed + 1] = item; item = {}
     end
   end,
 
