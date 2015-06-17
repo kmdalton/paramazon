@@ -14,5 +14,5 @@ The following can be gotten through pip:
 - bottlenose (https://github.com/lionheart/bottlenose) python wrapper for the Amazon Product Advertising API
 - redis (https://github.com/andymccurdy/redis-py) python bindings for access to a redis database
 - tornado (http://www.tornadoweb.org/) python based asynchronous webserver
-The rest are more complicated:
+__More Complicated Prereqs__
 - A server hosting the redis db -- could be localhost or somewhere else
