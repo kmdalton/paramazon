@@ -1,0 +1,12 @@
+#Server configuration parameters are whitespace delimitted
+#Comments get an octothorpe (whatever that is)
+
+#Redis-db related stuff
+redis-host localhost
+redis-port 6379
+redis-db   0
+
+#Amazon related stuff which should likely not be stored as plain text
+AWS_ACCESS_KEY_ID     NONE
+AWS_SECRET_ACCESS_KEY NONE
+AWS_ASSOCIATE_TAG     NONE
