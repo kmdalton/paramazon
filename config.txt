@@ -10,3 +10,6 @@ redis-db   0
 AWS_ACCESS_KEY_ID     NONE
 AWS_SECRET_ACCESS_KEY NONE
 AWS_ASSOCIATE_TAG     NONE
+
+#App behavior parameters
+levenshtein_cuttoff   2
