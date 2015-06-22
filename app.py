@@ -8,6 +8,8 @@
 
 from tornado.ioloop import IOLoop
 from tornado.web import RequestHandler, Application, url, asynchronous
+from bs4 import BeautifulStoneSoup as bs #This is DEPRECATED -- TODO: proper import
+from bottlenose import Amazon
 import redis, re
 
 #Go ahead, add more, I dare you.
@@ -31,6 +33,26 @@ def sanitize(string):
 class MainHandler(RequestHandler):
     def get(self):
         self.render('templates/index.html')
+
+class AmazonSearchHandler(RequestHandler):
+    def initialize(self, **kw):
+        self.amazon = bottlenose.Amazon(
+                kw['AWS_ACCESS_KEY_ID'],
+                kw['AWS_SECRET_ACCESS_KEY'],
+                kw['AWS_ASSOCIATE_TAG']
+                )
+        self.numpages = kw.get('pages', 10)
+    def post(self):
+        #TODO: proper error handling here for response
+        query = int(self.get_argument('pages', self.pages))
+        ASINs = []
+        for i in range(1, pages)
+            #TODO:figure out how long we should sleep here
+            query = self.get_argument('query')
+            soup  = bs(amazon.ItemSearch(Keywords=query, SearchIndex="All"))
+            itemIDs = soup.findAll('ASIN') #Get all itemIDs
+
+
 
 class SearchResultsHandler(RequestHandler):
     def initialize(self, **kw):
